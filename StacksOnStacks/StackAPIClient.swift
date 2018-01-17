@@ -10,11 +10,15 @@ import Foundation
 
 class StackAPIClient {
     
-    static let baseURL = "https://api.stackexchange.com/2.2"
-    static let getQuestionsEndpoint = "/questions?page=1&pagesize=20&order=desc&sort=activity&site=stackoverflow"
+    // MARK: Constants
+    static let baseURLString = "https://api.stackexchange.com/2.2"
     
-    static func getQuestions(completion: @escaping ([Item]) -> ()) {
-        guard let url = URL(string: "\(baseURL)\(getQuestionsEndpoint)") else { return }
+    // MARK: Getting Questions
+    static func getQuestions(count: Int, completion: @escaping ([Item]) -> ()) {
+        
+        let urlString = "\(baseURLString)/questions?page=1&pagesize=\(count)&order=desc&sort=activity&site=stackoverflow"
+        guard let url = URL(string: urlString) else { report(error: StackAPIError.invalidURL); return }
+        
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else { report(error: error!); return }
             guard let response = response as? HTTPURLResponse else { report(error: StackAPIError.badResponse); return }
@@ -33,21 +37,24 @@ class StackAPIClient {
         }.resume()
     }
     
+    // MARK: Error Handling
     static func report(error: Error) {
-        
+        print("Stack Exchange API Client Error: \(error)")
     }
-}
-
-enum StackAPIError: Error {
-    case badResponse
-    case noData
-    case invalidFormat
-}
-
-struct ResponseJSON: Codable {
-    let items: [Item]?
-}
-
-struct Item: Codable {
-    let title: String?
+    
+    // MARK: Types
+    enum StackAPIError: Error {
+        case invalidURL
+        case badResponse
+        case noData
+        case invalidFormat
+    }
+    
+    struct ResponseJSON: Codable {
+        let items: [Item]?
+    }
+    
+    struct Item: Codable {
+        let title: String?
+    }
 }

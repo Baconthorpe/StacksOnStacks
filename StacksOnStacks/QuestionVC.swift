@@ -8,12 +8,17 @@
 
 import UIKit
 
-class QuestionVC: UICollectionViewController {
+class QuestionVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var items: [Item] = []
+    // MARK: Data Specifications
+    let questionsToGet = 30
     
+    // MARK: Information From Client
+    var items: [StackAPIClient.Item] = []
+    
+    // MARK: Life Cycle
     override func viewDidLoad() {
-        StackAPIClient.getQuestions { retrievedItems in
+        StackAPIClient.getQuestions(count: questionsToGet) { retrievedItems in
             OperationQueue.main.addOperation {
                 self.items = retrievedItems
                 self.collectionView?.reloadData()
@@ -21,6 +26,7 @@ class QuestionVC: UICollectionViewController {
         }
     }
     
+    // MARK: Collection View Delegate
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -36,6 +42,11 @@ class QuestionVC: UICollectionViewController {
         cell.titleLabel.text = question.title
         
         return cell
+    }
+    
+    // MARK: Collection View Flow Layout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 200, height: 100);
     }
 }
 

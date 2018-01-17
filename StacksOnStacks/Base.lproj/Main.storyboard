@@ -31,19 +31,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4b-lh-0yB">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4b-lh-0yB">
+                                            <rect key="frame" x="5" y="5" width="90" height="90"/>
+                                            <color key="backgroundColor" red="1" green="0.81158846659999995" blue="0.34771136619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="T4b-lh-0yB" firstAttribute="leading" secondItem="LJd-TG-wEg" secondAttribute="leading" id="EaQ-OT-aqW"/>
-                                    <constraint firstAttribute="bottom" secondItem="T4b-lh-0yB" secondAttribute="bottom" id="fPU-jl-uu4"/>
-                                    <constraint firstAttribute="trailing" secondItem="T4b-lh-0yB" secondAttribute="trailing" id="j3L-5g-p5j"/>
-                                    <constraint firstItem="T4b-lh-0yB" firstAttribute="top" secondItem="LJd-TG-wEg" secondAttribute="top" id="n5L-e6-1u8"/>
+                                    <constraint firstItem="T4b-lh-0yB" firstAttribute="leading" secondItem="LJd-TG-wEg" secondAttribute="leading" constant="5" id="EaQ-OT-aqW"/>
+                                    <constraint firstAttribute="bottom" secondItem="T4b-lh-0yB" secondAttribute="bottom" constant="5" id="fPU-jl-uu4"/>
+                                    <constraint firstAttribute="trailing" secondItem="T4b-lh-0yB" secondAttribute="trailing" constant="5" id="j3L-5g-p5j"/>
+                                    <constraint firstItem="T4b-lh-0yB" firstAttribute="top" secondItem="LJd-TG-wEg" secondAttribute="top" constant="5" id="n5L-e6-1u8"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="titleLabel" destination="T4b-lh-0yB" id="FiV-DW-kbg"/>
